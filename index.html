@@ -3,118 +3,122 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Phone Matrix</title>
+  <title>Purple Galaxy Phones</title>
   <style>
     body {
       margin: 0;
       font-family: 'Poppins', sans-serif;
-      background-color: #000814;
-      color: #00bfff;
+      background: radial-gradient(circle at 20% 20%, #2b0052, #000);
+      color: #e0b3ff;
       overflow-x: hidden;
     }
 
     h1 {
       text-align: center;
       font-size: 2.5em;
-      color: #00bfff;
-      text-shadow: 0 0 20px #00bfff, 0 0 40px #0088ff;
+      color: #d580ff;
+      text-shadow: 0 0 20px #a64dff, 0 0 40px #ffb3ff;
       margin-top: 20px;
     }
 
     .phone-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-      gap: 20px;
-      padding: 30px;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 25px;
+      padding: 40px;
     }
 
     .phone {
-      background: rgba(0, 20, 40, 0.8);
-      border: 1px solid #00bfff;
+      background: rgba(50, 0, 90, 0.8);
+      border: 1px solid #b366ff;
       border-radius: 20px;
-      padding: 15px;
+      padding: 20px;
       text-align: center;
-      box-shadow: 0 0 15px #0077cc;
+      box-shadow: 0 0 20px #b366ff;
       transition: all 0.3s ease;
       cursor: pointer;
     }
 
     .phone:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 0 30px #00bfff, 0 0 60px #0077ff;
+      transform: translateY(-8px);
+      box-shadow: 0 0 40px #c080ff, 0 0 80px #a64dff;
+    }
+
+    .phone img {
+      width: 140px;
+      height: 160px;
+      border-radius: 10px;
+      box-shadow: 0 0 15px #bb77ff;
     }
 
     .phone h3 {
-      color: #00d5ff;
+      color: #f0c6ff;
       margin: 10px 0 5px;
+      text-shadow: 0 0 10px #d580ff;
     }
 
     .phone p {
-      color: #cceeff;
+      color: #e5ccff;
       font-size: 0.9em;
     }
 
     .footer {
       text-align: center;
-      color: #0099ff;
+      color: #d580ff;
       padding: 15px;
       font-size: 0.9em;
-      text-shadow: 0 0 10px #0088ff;
+      text-shadow: 0 0 10px #a64dff;
     }
 
-    @keyframes blink {
-      0%, 100% { opacity: 0.2; }
-      50% { opacity: 1; }
+    @keyframes stars {
+      from {background-position: 0 0;}
+      to {background-position: 1000px 1000px;}
     }
 
-    .led {
+    body::before {
+      content: "";
       position: fixed;
-      width: 6px;
-      height: 6px;
-      background: #00bfff;
-      border-radius: 50%;
-      box-shadow: 0 0 10px #00bfff, 0 0 20px #00bfff;
-      animation: blink 2s infinite;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      background: url('https://i.ibb.co/zHbmbtS/galaxy-bg.jpg');
+      background-size: cover;
+      background-position: center;
+      opacity: 0.2;
+      z-index: -1;
+      animation: stars 50s linear infinite;
     }
   </style>
 </head>
 <body>
-  <h1>📱 Phone Matrix</h1>
+  <h1>🌌 Purple Galaxy Phones</h1>
 
   <div class="phone-grid">
     <div class="phone">
-      <h3>iPhone 15 Pro</h3>
-      <p>RAM: 8GB<br>Memory: 256GB<br>Chip: A17 Pro</p>
+      <img src="https://i.ibb.co/TLsmntV/redmi8.jpg" alt="Redmi 8">
+      <h3>Redmi 8</h3>
+      <p>RAM: 4GB<br>Memory: 64GB<br>Chip: Snapdragon 439</p>
     </div>
+
     <div class="phone">
-      <h3>Samsung S24 Ultra</h3>
-      <p>RAM: 12GB<br>Memory: 512GB<br>Chip: Snapdragon 8 Gen 3</p>
+      <img src="https://i.ibb.co/QnVJpzW/redmi10.jpg" alt="Redmi 10">
+      <h3>Redmi 10</h3>
+      <p>RAM: 6GB<br>Memory: 128GB<br>Chip: Helio G88</p>
     </div>
+
     <div class="phone">
-      <h3>Redmi Note 13 Pro+</h3>
-      <p>RAM: 12GB<br>Memory: 256GB<br>Chip: Dimensity 7200 Ultra</p>
+      <img src="https://i.ibb.co/F6PvZ0R/infinix-hot30play.jpg" alt="Infinix Hot 30 Play">
+      <h3>Infinix Hot 30 Play</h3>
+      <p>RAM: 8GB<br>Memory: 128GB<br>Chip: Helio G37</p>
     </div>
+
     <div class="phone">
-      <h3>Google Pixel 8</h3>
-      <p>RAM: 8GB<br>Memory: 128GB<br>Chip: Tensor G3</p>
+      <img src="https://i.ibb.co/vQWmXkh/galaxy-a56.jpg" alt="Galaxy A56">
+      <h3>Galaxy A56</h3>
+      <p>RAM: 8GB<br>Memory: 256GB<br>Chip: Exynos 1480</p>
     </div>
   </div>
 
-  <div class="footer">© 2025 Husniddin’s Tech Matrix</div>
-
-  <script>
-    // Neon LED flicker background effect
-    const createLed = () => {
-      const led = document.createElement("div");
-      led.className = "led";
-      led.style.top = Math.random() * window.innerHeight + "px";
-      led.style.left = Math.random() * window.innerWidth + "px";
-      led.style.animationDuration = (1 + Math.random() * 2) + "s";
-      document.body.appendChild(led);
-      setTimeout(() => led.remove(), 3000);
-    };
-
-    setInterval(createLed, 150);
-  </script>
+  <div class="footer">© 2025 Husniddin’s Purple Galaxy</div>
 </body>
 </html>
