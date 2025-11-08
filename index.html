@@ -182,3 +182,56 @@
     </script>
 </body>
 </html>
+<!-- Top Contributors va maqolalarni linklar bilan bog'lash -->
+<aside>
+    <h3>Top Contributors</h3>
+    <ul>
+        <li><a href="#python">Husniddin</a></li>
+        <li><a href="#web">Ali</a></li>
+        <li><a href="#ai">Vali</a></li>
+        <li><a href="#security">Salim</a></li>
+        <li><a href="#other">Olim</a></li>
+    </ul>
+
+    <h3>Qidiruv</h3>
+    <input type="text" id="search" placeholder="Maqola qidiring..." style="width:100%; padding:5px;">
+</aside>
+
+<!-- Maqolalarda id berish -->
+<article id="python">
+    <h2>Python dasturlash tili</h2>
+    <p>Python — yuqori darajadagi...</p>
+</article>
+
+<article id="web">
+    <h2>Veb texnologiyalar</h2>
+    <p>HTML, CSS, JavaScript...</p>
+</article>
+
+<article id="ai">
+    <h2>AI va Mashina O‘rganish</h2>
+    <p>Sun’iy intellekt va ML...</p>
+</article>
+
+<article id="security">
+    <h2>Kompyuter Xavfsizligi</h2>
+    <p>Xavfsizlik, firewall...</p>
+</article>
+
+<article id="other">
+    <h2>Boshqa mavzular</h2>
+    <p>Qo‘shimcha IT mavzular...</p>
+</article>
+
+<!-- Smooth scroll JS -->
+<script>
+    const links = document.querySelectorAll('aside a[href^="#"]');
+
+    for (const link of links) {
+        link.addEventListener('click', function(e){
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            target.scrollIntoView({ behavior: 'smooth' });
+        });
+    }
+</script>
