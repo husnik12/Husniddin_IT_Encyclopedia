@@ -1,452 +1,184 @@
 <!DOCTYPE html>
 <html lang="uz">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>Husniddin IT Encyclopedia</title>
-<style>
-    :root{
-        --bg: #ffffff;
-        --text: #000000;
-        --accent: #111111;
-        --muted: #555555;
-        --card: #f8f8f8;
-    }
-    *{box-sizing:border-box}
-    body{
-        margin:0;
-        font-family: Inter, "Segoe UI", Roboto, Arial, sans-serif;
-        background:var(--bg);
-        color:var(--text);
-        -webkit-font-smoothing:antialiased;
-        -moz-osx-font-smoothing:grayscale;
-    }
-    header{
-        padding:28px 20px;
-        border-bottom:1px solid #eee;
-        text-align:center;
-    }
-    header h1{
-        margin:0;
-        font-size:28px;
-        letter-spacing:0.2px;
-    }
-    header p{margin:6px 0 0 0; color:var(--muted)}
-    main{
-        display:grid;
-        grid-template-columns: 380px 1fr;
-        gap:20px;
-        padding:20px;
-        max-width:1200px;
-        margin:18px auto;
-    }
-    .searchCard{
-        background:var(--card);
-        border-radius:12px;
-        padding:16px;
-        box-shadow: 0 4px 12px rgba(0,0,0,0.03);
-    }
-    .searchRow{
-        display:flex;
-        gap:8px;
-        margin-bottom:12px;
-    }
-    input[type="text"]{
-        flex:1;
-        padding:10px 12px;
-        border:1px solid #ddd;
-        border-radius:8px;
-        font-size:15px;
-        outline:none;
-    }
-    button{
-        padding:10px 14px;
-        border-radius:8px;
-        border:1px solid #222;
-        background:transparent;
-        cursor:pointer;
-        font-weight:600;
-    }
-    .hint{font-size:13px;color:var(--muted); margin-bottom:10px}
-    .resultsList{
-        max-height:520px;
-        overflow:auto;
-        padding-right:6px;
-    }
-    .topicItem{
-        padding:10px;
-        border-radius:8px;
-        margin-bottom:8px;
-        cursor:pointer;
-    }
-    .topicItem:hover{background:#fff}
-    .noMatch{color:var(--muted); padding:12px}
-    /* Detail area */
-    .detail{
-        background:var(--card);
-        border-radius:12px;
-        padding:18px;
-        min-height:320px;
-        box-shadow: 0 6px 16px rgba(0,0,0,0.03);
-    }
-    .detailHeader{
-        display:flex;
-        gap:18px;
-        align-items:center;
-    }
-    .detailHeader img{
-        width:140px;
-        height:140px;
-        object-fit:contain;
-        border-radius:8px;
-        background:white;
-        border:1px solid #eee;
-        padding:6px;
-    }
-    .detailHeader h2{margin:0;font-size:22px}
-    .detailHeader p{margin:6px 0 0 0;color:var(--muted)}
-    .detailBody{margin-top:14px; line-height:1.6; font-size:15px;}
-    .smallList{margin-top:12px;display:flex;flex-wrap:wrap;gap:8px}
-    .chip{padding:6px 10px;border-radius:999px;background:white;border:1px solid #eee;font-size:13px; cursor:pointer}
-    footer{max-width:1200px;margin:12px auto 60px auto;text-align:center;color:var(--muted);font-size:13px}
-    @media (max-width:900px){
-        main{grid-template-columns:1fr; padding:12px}
-        .detailHeader{flex-direction:column; align-items:flex-start}
-        .detailHeader img{width:120px;height:120px}
-    }
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Husniddin IT Encyclopedia - Eng to'liq IT ma'lumotlar manbai. Dasturlash, veb, AI va kompyuter xavfsizligi bo'yicha maqolalar.">
+    <meta name="keywords" content="IT, dasturlash, Python, JavaScript, kompyuter, veb, texnologiya, AI">
+    <meta name="author" content="Husniddin">
+    <title>Husniddin IT Encyclopedia</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+
+    <!-- CSS -->
+    <style>
+        /* Basic Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f5f5f5;
+            color: #222;
+            line-height: 1.6;
+        }
+
+        header {
+            background-color: #1e1e2f;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 2rem;
+        }
+
+        nav {
+            background-color: #2a2a40;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        nav a {
+            color: white;
+            padding: 15px 25px;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        nav a:hover {
+            background-color: #444466;
+            border-radius: 5px;
+        }
+
+        main {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 0 20px;
+        }
+
+        article {
+            background-color: white;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 10px rgba(0,0,0,0.1);
+        }
+
+        article h2 {
+            margin-bottom: 10px;
+            color: #1e1e2f;
+        }
+
+        article p {
+            margin-bottom: 10px;
+        }
+
+        /* Sidebar (Top Contributors / SEO extra content) */
+        aside {
+            background-color: #f0f0f0;
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+
+        aside h3 {
+            margin-bottom: 10px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 15px;
+            background-color: #1e1e2f;
+            color: white;
+            margin-top: 40px;
+        }
+
+        /* Responsive */
+        @media (min-width: 768px){
+            main {
+                display: flex;
+                gap: 20px;
+            }
+
+            article {
+                flex: 3;
+            }
+
+            aside {
+                flex: 1;
+            }
+        }
+    </style>
 </head>
 <body>
-<header>
-    <h1>Husniddin IT Encyclopedia</h1>
-    <p>IT haqida keng ma'lumotlar — qidir, o‘rgan, bos!</p>
-</header>
+    <header>
+        <h1>Husniddin IT Encyclopedia</h1>
+        <p>Eng to'liq IT ma'lumotlar manbai</p>
+    </header>
 
-<main>
-    <aside class="searchCard" aria-label="Search area">
-        <div class="searchRow">
-            <input id="searchBox" type="text" placeholder="Mavzuni qidir... (masalan: Python, CSS, Docker)" />
-            <button id="btnSearch">Qidir</button>
-        </div>
-        <div class="hint">Qisman yozuv bilan ham topadi. Pastda mos kelgan natijalar chiqadi — ustiga bosib batafsilni ko'r.</div>
-        <div id="results" class="resultsList"></div>
-    </aside>
+    <nav>
+        <a href="#">Bosh sahifa</a>
+        <a href="#">Dasturlash</a>
+        <a href="#">Veb Texnologiyalar</a>
+        <a href="#">AI va Mashina O‘rganish</a>
+        <a href="#">Kompyuter Xavfsizligi</a>
+        <a href="#">Qidiruv</a>
+    </nav>
 
-    <section class="detail" id="detail">
-        <div class="detailHeader">
-            <img id="detailImg" src="https://upload.wikimedia.org/wikipedia/commons/c/c3/Python-logo-notext.svg" alt="Logo">
-            <div>
-                <h2 id="detailTitle">Xush kelibsiz — Husniddin IT Encyclopedia</h2>
-                <p id="detailSubtitle">Chapdan mavzu qidirish yoki namunaviy mavzulardan birini bosish mumkin.</p>
-            </div>
-        </div>
-        <div id="detailBody" class="detailBody">
-            Bu sayt HTML + CSS + JavaScript bilan ishlaydi. Har bir mavzu uchun qisqacha ma'lumot va rasm berilgan. Qidiruv natijalari pastda paydo bo'ladi.
-        </div>
-        <div class="smallList" id="popular"></div>
-    </section>
-</main>
+    <main>
+        <article>
+            <h2>Python dasturlash tili</h2>
+            <p>Python — yuqori darajadagi, oson o‘rganiladigan dasturlash tili bo‘lib, veb, AI, o‘yinlar va ilmiy hisoblashlarda ishlatiladi.</p>
+            <p>Python keng kutubxonalar bilan ta’minlangan va boshlang‘ich dasturchilar uchun juda qulay.</p>
+        </article>
 
-<footer>© Husniddin — IT o‘rganish uchun oddiy va tez sayt</footer>
+        <article>
+            <h2>Veb texnologiyalar</h2>
+            <p>HTML, CSS va JavaScript orqali interaktiv va zamonaviy veb saytlar yaratish mumkin. Zamonaviy frameworklar: React, Vue, Angular.</p>
+        </article>
 
-<script>
-/* Kengaytirilgan data: matn + rasm */
-const data = {
-    "Python": {
-        text: "Python — yuqori darajadagi dasturlash tili, oson sintaksis va katta kutubxonalar bilan mashhur. Veb (Django, Flask), ma'lumotlar tahlili, sun'iy intellekt va avtomatlashtirishda keng ishlatiladi.",
-        img: "https://upload.wikimedia.org/wikipedia/commons/c/c3/Python-logo-notext.svg"
-    },
-    "HTML": {
-        text: "HTML — veb sahifalarning tuzilishini belgilaydigan belgilash (markup) tili. Sahifadagi elementlar (sarlavha, paragraf, rasm) HTML bilan yaratiladi.",
-        img: "https://upload.wikimedia.org/wikipedia/commons/6/61/HTML5_logo_and_wordmark.svg"
-    },
-    "CSS": {
-        text: "CSS — veb sahifalarga dizayn berish uchun ishlatiladi: rang, joylashuv, shrift va responsivlik. CSS3 hozirgi standartlar va animatsiyalarni qo‘llab-quvvatlaydi.",
-        img: "https://upload.wikimedia.org/wikipedia/commons/d/d5/CSS3_logo_and_wordmark.svg"
-    },
-    "JavaScript": {
-        text: "JavaScript — brauzerda ishlaydigan dasturlash tili. DOM manipulyatsiyasi, interaktivlik va SPA ilovalar yaratishda asosiy vosita.",
-        img: "https://upload.wikimedia.org/wikipedia/commons/6/6a/JavaScript-logo.png"
-    },
-    "React": {
-        text: "React — komponent asosida qurilgan JavaScript kutubxonasi. UI yaratuvchilari uchun tez va qayta ishlatiladigan komponentlar bilan ishlaydi.",
-        img: "https://upload.wikimedia.org/wikipedia/commons/a/a7/React-icon.svg"
-    },
-    "Node.js": {
-        text: "Node.js — server tomonida JavaScript ishlatish imkonini beruvchi runtime. API va real-time xizmatlarni yaratishda keng ishlatiladi.",
-        img: "https://upload.wikimedia.org/wikipedia/commons/d/d9/Node.js_logo.svg"
-    },
-    "Git": {
-        text: "Git — tarqatilgan versiya nazorati tizimi. Kod tarixini saqlash va jamoadagi hamkorlikni osonlashtiradi.",
-        img: "https://upload.wikimedia.org/wikipedia/commons/e/e0/Git-logo.svg"
-    },
-    "GitHub": {
-        text: "GitHub — Git repositoriylarini saqlash va boshqarish xizmati. Open-source loyihalar va hamkorlik uchun ishlatiladi.",
-        img: "https://upload.wikimedia.org/wikipedia/commons/9/91/Octicons-mark-github.svg"
-    },
-    "API": {
-        text: "API (Application Programming Interface) — dasturlar orasida ma'lumot almashish uchun ishlatiladigan interfeyslar toʻplami.",
-        img: "https://upload.wikimedia.org/wikipedia/commons/7/7f/API-logo.svg"
-    },
-    "SQL": {
-        text: "SQL — strukturalangan ma'lumotlar bazalari bilan ishlash tili. Ma'lumot so'rovlar (SELECT), qo'shish (INSERT), o'zgartirish (UPDATE) va o'chirish (DELETE) uchun ishlatiladi.",
-        img: "https://upload.wikimedia.org/wikipedia/commons/8/87/Sql_data_base_with_logo.png"
-    },
-    "NoSQL": {
-        text: "NoSQL — an'anaviy SQL ga muvofiq bo'lmagan ma'lumotlar bazalari (key-value, document, graph). Moslashuvchan schema va katta hajmdagi ma'lumotlar uchun qulay.",
-        img: "https://upload.wikimedia.org/wikipedia/commons/6/6f/NoSQL.svg"
-    },
-    "Linux": {
-        text: "Linux — ochiq manba operatsion tizim. Serverlar, tarmoqlar va dasturchilar orasida keng tarqalgan.",
-        img: "https://upload.wikimedia.org/wikipedia/commons/3/35/Tux.svg"
-    },
-    "Windows": {
-        text: "Windows — Microsoft kompaniyasining operatsion tizimi. Desktop va server uchun keng qo'llaniladi.",
-        img: "https://upload.wikimedia.org/wikipedia/commons/5/5f/Windows_logo_-_2012.svg"
-    },
-    "MacOS": {
-        text: "macOS — Apple kompaniyasining operatsion tizimi. Grafik va dizayn ishlari uchun mashhur platforma.",
-        img: "https://upload.wikimedia.org/wikipedia/commons/2/21/MacOS_wordmark_logo.png"
-    },
-    "AI": {
-        text: "AI (Artificial Intelligence) — kompyuter tizimlarini insonga o'xshash vazifalarni bajarishga o'rgatish; tasvir taniqligi, nutqni qayta ishlash va boshqalar.",
-        img: "https://upload.wikimedia.org/wikipedia/commons/1/10/Artificial_Intelligence_Icon.svg"
-    },
-    "Machine Learning": {
-        text: "Machine Learning — ma'lumotlardan o'rganadigan algoritmlar. Model yaratish va prognozlar qilishda ishlatiladi.",
-        img: "https://upload.wikimedia.org/wikipedia/commons/3/34/Machine_learning.png"
-    },
-    "Deep Learning": {
-        text: "Deep Learning — ko'p qatlamli neyron tarmoqlardan foydalangan holda murakkab vazifalarni bajarish (tasvir, nutq, tahlil).",
-        img: "https://upload.wikimedia.org/wikipedia/commons/2/20/Deep_Learning.svg"
-    },
-    "Cloud Computing": {
-        text: "Cloud Computing — internet orqali hisoblash resurslari (server, database, storage) ishlatish. AWS, Azure, Google Cloud asosiy provayderlar.",
-        img: "https://upload.wikimedia.org/wikipedia/commons/0/05/Cloud_computing_logo.svg"
-    },
-    "Docker": {
-        text: "Docker — konteyner asosida ilovalarni izolyatsiya qilish va tarqatishni osonlashtiruvchi texnologiya.",
-        img: "https://upload.wikimedia.org/wikipedia/commons/4/4e/Docker_%28container_engine%29_logo.png"
-    },
-    "Kubernetes": {
-        text: "Kubernetes — konteynerlarni orchestratsiya qilish tizimi; tarqatish, autoscale va boshqaruvni osonlashtiradi.",
-        img: "https://upload.wikimedia.org/wikipedia/commons/3/39/Kubernetes_logo_without_workmark.svg"
-    },
-    "HTML5": {
-        text: "HTML5 — HTML ning yangi versiyasi, video, audio va grafik elementlarni qo'llab-quvvatlaydi.",
-        img: "https://upload.wikimedia.org/wikipedia/commons/6/61/HTML5_logo_and_wordmark.svg"
-    },
-    "CSS3": {
-        text: "CSS3 — CSS ning yangi imkoniyatlari: animatsiyalar, flexbox, grid va media queries.",
-        img: "https://upload.wikimedia.org/wikipedia/commons/d/d5/CSS3_logo_and_wordmark.svg"
-    },
-    "Bootstrap": {
-        text: "Bootstrap — frontend framework; grid, komponentlar va responsive tyurinish yaratishni osonlashtiradi.",
-        img: "https://upload.wikimedia.org/wikipedia/commons/b/b2/Bootstrap_logo.svg"
-    },
-    "jQuery": {
-        text: "jQuery — JavaScript kutubxonasi; DOM manipulyatsiyasini soddalashtiradi (hozir eski, lekin ba'zi loyihalarda ishlatiladi).",
-        img: "https://upload.wikimedia.org/wikipedia/commons/9/9e/JQuery_logo.svg"
-    },
-    "PHP": {
-        text: "PHP — server tomonida ishlaydigan dasturlash tili; ko'plab vebsaytlar va CMS lar PHP asosida ishlaydi (WordPress, Drupal).",
-        img: "https://upload.wikimedia.org/wikipedia/commons/2/27/PHP-logo.svg"
-    },
-    "Laravel": {
-        text: "Laravel — PHP framework; sadalik, xavfsizlik va tezkor rivojlanish uchun qulay strukturani beradi.",
-        img: "https://upload.wikimedia.org/wikipedia/commons/9/9a/Laravel.svg"
-    },
-    "Django": {
-        text: "Django — Python uchun kuchli web framework; 'batteries-included' yondashuvi bilan mashhur.",
-        img: "https://upload.wikimedia.org/wikipedia/commons/7/75/Django_logo.svg"
-    },
-    "REST": {
-        text: "REST — web xizmatlar (API) yaratish uchun arxitektura printsiplari (stateless, resources).",
-        img: "https://upload.wikimedia.org/wikipedia/commons/9/97/REST_API.svg"
-    },
-    "GraphQL": {
-        text: "GraphQL — API so'rovlarini mijoz aniq kerakli maydonlarni so'rashi mumkin bo'lgan formatda beradi.",
-        img: "https://upload.wikimedia.org/wikipedia/commons/1/17/GraphQL_Logo.svg"
-    },
-    "JSON": {
-        text: "JSON — ma'lumot almashish uchun yengil format, ko'plab tilda qo'llaniladi.",
-        img: "https://upload.wikimedia.org/wikipedia/commons/c/c9/JSON_vector_logo.svg"
-    },
-    "XML": {
-        text: "XML — strukturaviy ma'lumotlarni saqlash va uzatish formati; hozir JSON ko'proq ishlatiladi, lekin XML hamon mavjud.",
-        img: "https://upload.wikimedia.org/wikipedia/commons/4/4e/XML_logo.svg"
-    },
-    "Java": {
-        text: "Java — platformadan mustaqil dasturlash tili; korporativ va mobil (Android) ilovalar uchun ishlatiladi.",
-        img: "https://upload.wikimedia.org/wikipedia/en/3/30/Java_programming_language_logo.svg"
-    },
-    "C++": {
-        text: "C++ — yuqori samarali, tizim va o'yin dasturlari uchun keng qo'llaniladigan til.",
-        img: "https://upload.wikimedia.org/wikipedia/commons/1/18/ISO_C%2B%2B_Logo.svg"
-    },
-    "C#": {
-        text: "C# — Microsoft ekotizimida keng ishlatiladigan til; .NET platformasida web va desktop ilovalar uchun.",
-        img: "https://upload.wikimedia.org/wikipedia/commons/7/7a/C_Sharp_logo.svg"
-    },
-    "Swift": {
-        text: "Swift — Apple ilovalarini yaratish uchun mo'ljallangan til; iOS va macOS uchun ishlatiladi.",
-        img: "https://upload.wikimedia.org/wikipedia/commons/9/9d/Swift_logo.svg"
-    },
-    "Objective-C": {
-        text: "Objective-C — Swift kelishidan oldin Apple ilovalarida ishlatilgan til; hozir ham ba'zi loyihalarda mavjud.",
-        img: "https://upload.wikimedia.org/wikipedia/commons/6/6b/Objective-C_logo.svg"
-    },
-    "TypeScript": {
-        text: "TypeScript — JavaScript-ga statik tiplash qo‘shadi; katta loyihalarda xatoliklarni kamaytiradi.",
-        img: "https://upload.wikimedia.org/wikipedia/commons/4/4c/Typescript_logo_2020.svg"
-    },
-    "Angular": {
-        text: "Angular — TypeScript asosidagi frontend framework; murakkab SPA ilovalar uchun mos.",
-        img: "https://upload.wikimedia.org/wikipedia/commons/c/cf/Angular_full_color_logo.svg"
-    },
-    "Vue.js": {
-        text: "Vue.js — yengil va oson o'rganiladigan frontend framework; komponent asosida UI yaratish qulay.",
-        img: "https://upload.wikimedia.org/wikipedia/commons/9/95/Vue.js_Logo_2.svg"
-    },
-    "DevOps": {
-        text: "DevOps — dasturchilar va IT operatsiyalar birgalikda ishlashi uchun metodologiya (CI/CD, monitoring, infra as code).",
-        img: "https://upload.wikimedia.org/wikipedia/commons/6/6e/DevOps_Logo.png"
-    },
-    "Cybersecurity": {
-        text: "Cybersecurity — tizimlar va ma'lumotlarni himoya qilish. Xavfsizlik tarmoqlari, penetration testing va monitoring.",
-        img: "https://upload.wikimedia.org/wikipedia/commons/0/0e/Cyber_security_logo.svg"
-    },
-    "Network": {
-        text: "Network — kompyuterlar o'rtasidagi aloqa, protokollar (TCP/IP), marshrutizatsiya va tarmoq dizayni.",
-        img: "https://upload.wikimedia.org/wikipedia/commons/1/10/Internet_map_1024.png"
-    },
-    "Database": {
-        text: "Database — ma'lumotlarni strukturaviy saqlash va qidirish tizimlari. RDBMS va NoSQL turlari mavjud.",
-        img: "https://upload.wikimedia.org/wikipedia/commons/8/87/Sql_data_base_with_logo.png"
-    },
-    "SQL Server": {
-        text: "SQL Server — Microsoft ma'lumotlar bazasi platformasi, korporativ foydalanish uchun qulay.",
-        img: "https://upload.wikimedia.org/wikipedia/commons/9/9a/Microsoft_SQL_Server_logo.png"
-    },
-    "Oracle": {
-        text: "Oracle — yirik korporativ ma'lumotlar bazasi platformasi, yuqori darajadagi imkoniyatlar bilan.",
-        img: "https://upload.wikimedia.org/wikipedia/commons/5/50/Oracle_logo.svg"
-    },
-    "MySQL": {
-        text: "MySQL — ochiq manba RDBMS; web ilovalar uchun ishlatiladi.",
-        img: "https://upload.wikimedia.org/wikipedia/en/d/dd/MySQL_logo.svg"
-    },
-    "PostgreSQL": {
-        text: "PostgreSQL — kuchli ochiq manba RDBMS; murakkab so'rovlar va kengaytmalarni qo'llaydi.",
-        img: "https://upload.wikimedia.org/wikipedia/commons/2/29/Postgresql_elephant.svg"
-    },
-    "Firebase": {
-        text: "Firebase — Google bulut xizmati; real-time database, auth va hosting kabi backend xizmatlarini taqdim etadi.",
-        img: "https://upload.wikimedia.org/wikipedia/commons/3/37/Firebase_Logo.svg"
-    },
-    "API Security": {
-        text: "API Security — API larni himoya qilish: autentifikatsiya, avtorizatsiya, rate limiting va input tekshiruvi.",
-        img: "https://upload.wikimedia.org/wikipedia/commons/7/7f/API-logo.svg"
-    }
-};
+        <aside>
+            <h3>Top Contributors</h3>
+            <ul>
+                <li>Husniddin</li>
+                <li>Ali</li>
+                <li>Vali</li>
+                <li>Salim</li>
+                <li>Olim</li>
+            </ul>
 
-/* Utility: get keys sorted */
-const keys = Object.keys(data).sort((a,b)=>a.localeCompare(b));
+            <h3>Qidiruv</h3>
+            <input type="text" id="search" placeholder="Maqola qidiring..." style="width:100%; padding:5px;">
+        </aside>
+    </main>
 
-/* Populate popular/shown chips */
-const popularElem = document.getElementById("popular");
-const popularSample = ["Python","JavaScript","HTML","CSS","Docker","Kubernetes","AI","Machine Learning"];
-popularSample.forEach(k=>{
-    if(data[k]){
-        const c = document.createElement("div");
-        c.className="chip";
-        c.textContent=k;
-        c.onclick=()=> showTopic(k);
-        popularElem.appendChild(c);
-    }
-});
+    <footer>
+        &copy; 2025 Husniddin IT Encyclopedia | All rights reserved
+    </footer>
 
-/* Elements */
-const searchBox = document.getElementById("searchBox");
-const btnSearch = document.getElementById("btnSearch");
-const results = document.getElementById("results");
-const detailTitle = document.getElementById("detailTitle");
-const detailSubtitle = document.getElementById("detailSubtitle");
-const detailImg = document.getElementById("detailImg");
-const detailBody = document.getElementById("detailBody");
+    <!-- JS: Qidiruv funksiyasi -->
+    <script>
+        const searchInput = document.getElementById('search');
+        const articles = document.querySelectorAll('article');
 
-/* Show initial list (alphabetical) */
-function showInitial(){
-    results.innerHTML="";
-    keys.forEach(k=>{
-        const d = document.createElement("div");
-        d.className="topicItem";
-        d.innerHTML = `<strong>${k}</strong><div style="font-size:13px;color:${'#555'};margin-top:4px">${shorten(data[k].text,80)}</div>`;
-        d.onclick = ()=> showTopic(k);
-        results.appendChild(d);
-    });
-}
-function shorten(s,len){
-    return s.length>len? s.slice(0,len-1)+"…": s;
-}
-
-/* Show a topic in detail pane */
-function showTopic(key){
-    const item = data[key];
-    if(!item) return;
-    detailTitle.textContent = key;
-    detailSubtitle.textContent = "IT mavzusi — Husniddin";
-    detailImg.src = item.img || "";
-    detailImg.alt = key;
-    // If image fails, show placeholder
-    detailImg.onerror = function(){ this.src = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Crect width='100%25' height='100%25' fill='%23ffffff'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-size='12' fill='%23666' %3ENo image%3C/text%3E%3C/svg%3E"; };
-    detailBody.innerHTML = `<p>${item.text}</p>`;
-    // highlight clicked in results
-    Array.from(document.getElementsByClassName('topicItem')).forEach(el=> el.style.background='transparent');
-}
-
-/* Search logic: case-insensitive, partial match, fuzzy by includes, rank exact first */
-function doSearch(q){
-    q = q.trim().toLowerCase();
-    results.innerHTML="";
-    if(q===""){
-        showInitial();
-        return;
-    }
-    const exact = [];
-    const starts = [];
-    const includes = [];
-    keys.forEach(k=>{
-        const lk = k.toLowerCase();
-        if(lk === q) exact.push(k);
-        else if(lk.startsWith(q)) starts.push(k);
-        else if(lk.includes(q)) includes.push(k);
-    });
-    const final = exact.concat(starts).concat(includes);
-    if(final.length===0){
-        results.innerHTML = `<div class="noMatch">Uzr, bu mavzu topilmadi. Toʻliq yoki qisqa nomini yozib ko'ring (masalan: "Python" yoki "machine").</div>`;
-        return;
-    }
-    final.forEach(k=>{
-        const d = document.createElement("div");
-        d.className="topicItem";
-        d.innerHTML = `<strong>${k}</strong><div style="font-size:13px;color:${'#555'};margin-top:4px">${shorten(data[k].text,90)}</div>`;
-        d.onclick = ()=> showTopic(k);
-        results.appendChild(d);
-    });
-}
-
-/* Key interactions */
-btnSearch.onclick = ()=> doSearch(searchBox.value);
-searchBox.addEventListener("keydown", (e)=>{
-    if(e.key === "Enter"){ doSearch(searchBox.value); }
-});
-
-/* Show initial view and auto-focus */
-showInitial();
-searchBox.focus();
-
-/* Optional: if user types long query, try to match multi-word keys */
-</script>
+        searchInput.addEventListener('input', function() {
+            const query = this.value.toLowerCase();
+            articles.forEach(article => {
+                const text = article.textContent.toLowerCase();
+                if(text.includes(query)){
+                    article.style.display = '';
+                } else {
+                    article.style.display = 'none';
+                }
+            });
+        });
+    </script>
 </body>
 </html>
