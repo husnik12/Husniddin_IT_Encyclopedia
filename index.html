@@ -3,117 +3,40 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Husniddin IT Encyclopedia - Eng to'liq IT ma'lumotlar manbai. Dasturlash, veb, AI va kompyuter xavfsizligi bo'yicha maqolalar.">
+    <meta name="description" content="Husniddin IT Encyclopedia - Eng to'liq IT ma'lumotlar manbai. Dasturlash, veb, AI va kompyuter xavfsizligi.">
     <meta name="keywords" content="IT, dasturlash, Python, JavaScript, kompyuter, veb, texnologiya, AI">
     <meta name="author" content="Husniddin">
     <title>Husniddin IT Encyclopedia</title>
-    
-    <!-- Favicon -->
     <link rel="icon" href="favicon.ico" type="image/x-icon">
 
     <!-- CSS -->
     <style>
-        /* Basic Reset */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
+        * { margin:0; padding:0; box-sizing:border-box; font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;}
+        body { background-color:#f5f5f5; color:#222; line-height:1.6; scroll-behavior: smooth;}
+        header { background-color:#1e1e2f; color:white; padding:25px; text-align:center; position: sticky; top:0; z-index: 10; }
+        header h1 { font-size:2rem; animation: fadeSlide 1s ease forwards; opacity:0;}
+        nav { background-color:#2a2a40; display:flex; justify-content:center; flex-wrap:wrap; }
+        nav a { color:white; padding:15px 25px; text-decoration:none; transition:0.3s;}
+        nav a:hover { background-color:#444466; border-radius:5px; }
 
-        body {
-            background-color: #f5f5f5;
-            color: #222;
-            line-height: 1.6;
-        }
+        main { max-width:1200px; margin:20px auto; padding:0 20px; display:flex; flex-wrap:wrap; gap:20px;}
+        article { background:white; padding:20px; border-radius:10px; box-shadow:0 4px 10px rgba(0,0,0,0.1); flex:3; opacity:0; transform:translateY(30px); animation:fadeSlide 1s forwards; }
+        article h2 { margin-bottom:10px; color:#1e1e2f; }
+        article p { margin-bottom:10px; }
 
-        header {
-            background-color: #1e1e2f;
-            color: white;
-            padding: 20px;
-            text-align: center;
-        }
+        aside { background:#f0f0f0; padding:15px; border-radius:10px; flex:1; height:fit-content; animation: fadeSlide 1.2s forwards; opacity:0; transform:translateY(30px);}
+        aside h3 { margin-bottom:10px; }
 
-        header h1 {
-            font-size: 2rem;
-        }
+        footer { text-align:center; padding:15px; background:#1e1e2f; color:white; margin-top:40px;}
 
-        nav {
-            background-color: #2a2a40;
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-
-        nav a {
-            color: white;
-            padding: 15px 25px;
-            text-decoration: none;
-            transition: 0.3s;
-        }
-
-        nav a:hover {
-            background-color: #444466;
-            border-radius: 5px;
-        }
-
-        main {
-            max-width: 1200px;
-            margin: 20px auto;
-            padding: 0 20px;
-        }
-
-        article {
-            background-color: white;
-            padding: 20px;
-            margin-bottom: 20px;
-            border-radius: 10px;
-            box-shadow: 0px 4px 10px rgba(0,0,0,0.1);
-        }
-
-        article h2 {
-            margin-bottom: 10px;
-            color: #1e1e2f;
-        }
-
-        article p {
-            margin-bottom: 10px;
-        }
-
-        /* Sidebar (Top Contributors / SEO extra content) */
-        aside {
-            background-color: #f0f0f0;
-            padding: 15px;
-            border-radius: 10px;
-            margin-bottom: 20px;
-        }
-
-        aside h3 {
-            margin-bottom: 10px;
-        }
-
-        footer {
-            text-align: center;
-            padding: 15px;
-            background-color: #1e1e2f;
-            color: white;
-            margin-top: 40px;
+        /* Animations */
+        @keyframes fadeSlide {
+            to { opacity:1; transform:translateY(0);}
         }
 
         /* Responsive */
-        @media (min-width: 768px){
-            main {
-                display: flex;
-                gap: 20px;
-            }
-
-            article {
-                flex: 3;
-            }
-
-            aside {
-                flex: 1;
-            }
+        @media (max-width:768px){
+            main { flex-direction:column; }
         }
     </style>
 </head>
@@ -124,34 +47,50 @@
     </header>
 
     <nav>
-        <a href="#">Bosh sahifa</a>
-        <a href="#">Dasturlash</a>
-        <a href="#">Veb Texnologiyalar</a>
-        <a href="#">AI va Mashina O‘rganish</a>
-        <a href="#">Kompyuter Xavfsizligi</a>
-        <a href="#">Qidiruv</a>
+        <a href="#home">Bosh sahifa</a>
+        <a href="#python">Python</a>
+        <a href="#web">Veb</a>
+        <a href="#ai">AI</a>
+        <a href="#security">Xavfsizlik</a>
     </nav>
 
     <main>
-        <article>
+        <!-- Maqolalar -->
+        <article id="home">
+            <h2>Bosh sahifa</h2>
+            <p>Salom! Bu Husniddin IT Encyclopedia bosh sahifasi.</p>
+            <p>Bu yerda siz IT bo‘yicha barcha ma’lumotlarni topishingiz mumkin.</p>
+        </article>
+
+        <article id="python">
             <h2>Python dasturlash tili</h2>
-            <p>Python — yuqori darajadagi, oson o‘rganiladigan dasturlash tili bo‘lib, veb, AI, o‘yinlar va ilmiy hisoblashlarda ishlatiladi.</p>
-            <p>Python keng kutubxonalar bilan ta’minlangan va boshlang‘ich dasturchilar uchun juda qulay.</p>
+            <p>Python — yuqori darajadagi dasturlash tili. Veb, AI, o‘yinlar va ilmiy hisoblashlar uchun ishlatiladi.</p>
         </article>
 
-        <article>
+        <article id="web">
             <h2>Veb texnologiyalar</h2>
-            <p>HTML, CSS va JavaScript orqali interaktiv va zamonaviy veb saytlar yaratish mumkin. Zamonaviy frameworklar: React, Vue, Angular.</p>
+            <p>HTML, CSS va JavaScript orqali interaktiv va zamonaviy veb saytlar yaratish mumkin.</p>
         </article>
 
+        <article id="ai">
+            <h2>AI va Mashina O‘rganish</h2>
+            <p>Sun’iy intellekt va mashina o‘rganish sohalari IT dunyosida tez rivojlanmoqda.</p>
+        </article>
+
+        <article id="security">
+            <h2>Kompyuter Xavfsizligi</h2>
+            <p>Firewall, antivirus va tarmoqlarni himoya qilish bo‘yicha foydali maqolalar.</p>
+        </article>
+
+        <!-- Sidebar -->
         <aside>
             <h3>Top Contributors</h3>
             <ul>
-                <li>Husniddin</li>
-                <li>Ali</li>
-                <li>Vali</li>
-                <li>Salim</li>
-                <li>Olim</li>
+                <li><a href="#home">Husniddin</a></li>
+                <li><a href="#python">Ali</a></li>
+                <li><a href="#web">Vali</a></li>
+                <li><a href="#ai">Salim</a></li>
+                <li><a href="#security">Olim</a></li>
             </ul>
 
             <h3>Qidiruv</h3>
@@ -163,75 +102,29 @@
         &copy; 2025 Husniddin IT Encyclopedia | All rights reserved
     </footer>
 
-    <!-- JS: Qidiruv funksiyasi -->
+    <!-- JS: Smooth scroll va qidiruv -->
     <script>
+        // Smooth scroll for links
+        const links = document.querySelectorAll('nav a, aside a');
+        links.forEach(link => {
+            link.addEventListener('click', e => {
+                e.preventDefault();
+                const target = document.querySelector(link.getAttribute('href'));
+                target.scrollIntoView({behavior:'smooth'});
+            });
+        });
+
+        // Search filter
         const searchInput = document.getElementById('search');
         const articles = document.querySelectorAll('article');
-
-        searchInput.addEventListener('input', function() {
+        searchInput.addEventListener('input', function(){
             const query = this.value.toLowerCase();
             articles.forEach(article => {
                 const text = article.textContent.toLowerCase();
-                if(text.includes(query)){
-                    article.style.display = '';
-                } else {
-                    article.style.display = 'none';
-                }
+                if(text.includes(query)) { article.style.display = ''; }
+                else { article.style.display = 'none'; }
             });
         });
     </script>
 </body>
 </html>
-<!-- Top Contributors va maqolalarni linklar bilan bog'lash -->
-<aside>
-    <h3>Top Contributors</h3>
-    <ul>
-        <li><a href="#python">Husniddin</a></li>
-        <li><a href="#web">Ali</a></li>
-        <li><a href="#ai">Vali</a></li>
-        <li><a href="#security">Salim</a></li>
-        <li><a href="#other">Olim</a></li>
-    </ul>
-
-    <h3>Qidiruv</h3>
-    <input type="text" id="search" placeholder="Maqola qidiring..." style="width:100%; padding:5px;">
-</aside>
-
-<!-- Maqolalarda id berish -->
-<article id="python">
-    <h2>Python dasturlash tili</h2>
-    <p>Python — yuqori darajadagi...</p>
-</article>
-
-<article id="web">
-    <h2>Veb texnologiyalar</h2>
-    <p>HTML, CSS, JavaScript...</p>
-</article>
-
-<article id="ai">
-    <h2>AI va Mashina O‘rganish</h2>
-    <p>Sun’iy intellekt va ML...</p>
-</article>
-
-<article id="security">
-    <h2>Kompyuter Xavfsizligi</h2>
-    <p>Xavfsizlik, firewall...</p>
-</article>
-
-<article id="other">
-    <h2>Boshqa mavzular</h2>
-    <p>Qo‘shimcha IT mavzular...</p>
-</article>
-
-<!-- Smooth scroll JS -->
-<script>
-    const links = document.querySelectorAll('aside a[href^="#"]');
-
-    for (const link of links) {
-        link.addEventListener('click', function(e){
-            e.preventDefault();
-            const target = document.querySelector(this.getAttribute('href'));
-            target.scrollIntoView({ behavior: 'smooth' });
-        });
-    }
-</script>
